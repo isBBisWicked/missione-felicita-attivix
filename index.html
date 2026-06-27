@@ -3,190 +3,205 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Attivix - Missione Felicità, un piccolo gioco punta e clicca sul valore del volontariato." />
+  <meta name="description" content="Attivix — Missione Felicità: un gioco punta e clicca sul valore concreto del volontariato." />
   <title>Attivix — Missione Felicità</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="game-shell">
-    <header class="topbar">
+    <header class="masthead">
       <a class="brand" href="#" aria-label="Attivix Missione Felicità">
-        <span class="brand-mark">A</span>
-        <span>
+        <span class="brand-symbol" aria-hidden="true">A</span>
+        <span class="brand-text">
           <strong>attivix</strong>
-          <small>MISSIONE FELICITÀ</small>
+          <small>MISSIONE FELICITÀ / EDIZIONE BETA</small>
         </span>
       </a>
 
-      <div class="top-stats" aria-label="Riepilogo partita">
-        <div class="stat-pill impact-pill">
-          <span>Felicità diffusa</span>
-          <strong id="communityHappiness">0%</strong>
-        </div>
-        <div class="stat-pill wallet-pill">
-          <span>Portafoglio Attivix</span>
-          <strong><span id="walletPoints">0</span> PX</strong>
-        </div>
+      <div class="masthead-note">
+        <span class="signal-dot" aria-hidden="true"></span>
+        CITTÀ IN ASCOLTO
       </div>
     </header>
 
-    <section class="intro-row">
-      <div>
-        <p class="eyebrow">GIOCO PUNTA E CLICCA</p>
-        <h1>Un piccolo gesto cambia la giornata.</h1>
-        <p class="intro-copy">
-          Clicca sulle richieste di aiuto nella piazza. Il tuo volontario raggiungerà le persone,
-          completerà una missione e genererà felicità nella comunità. Una parte dell'impatto torna nel suo portafoglio Attivix.
+    <section class="opening">
+      <div class="opening-copy">
+        <p class="eyebrow">UN PICCOLO GIOCO SUL VOLONTARIATO</p>
+        <h1>Una città non cambia da sola.</h1>
+        <p>
+          Ogni richiesta è un gesto concreto: un aiuto, un ascolto, un luogo curato.
+          Clicca una chiamata sulla mappa, porta il volontario sul posto e guarda l'impatto
+          diventare felicità per la comunità e punti nel portafoglio Attivix.
         </p>
       </div>
 
-      <button class="reset-button" id="resetButton" type="button">Ricomincia</button>
+      <div class="opening-stamp" aria-label="Messaggio del gioco">
+        <span>OGGI</span>
+        <strong>4</strong>
+        <small>GESTI POSSIBILI</small>
+      </div>
+    </section>
+
+    <section class="impact-strip" aria-label="Riepilogo della partita">
+      <div class="impact-reading impact-reading-main">
+        <span>FELICITÀ IN CIRCOLO</span>
+        <strong id="communityHappiness">0%</strong>
+        <div class="meter" aria-hidden="true"><span id="communityMeter"></span></div>
+      </div>
+
+      <div class="impact-reading">
+        <span>MISSIONI PORTATE A TERMINE</span>
+        <strong id="missionCount">0 / 4</strong>
+      </div>
+
+      <div class="impact-reading wallet-reading">
+        <span>PORTAFOGLIO ATTIVIX</span>
+        <strong><span id="walletPoints">0</span> PX</strong>
+      </div>
+
+      <button class="reset-button" id="resetButton" type="button">AZZERA PARTITA</button>
     </section>
 
     <section class="game-layout">
-      <section class="scene-card" aria-label="Piazza della comunità">
-        <div class="scene-header">
+      <section class="map-panel" aria-label="Mappa delle richieste nella comunità">
+        <header class="map-header">
           <div>
-            <span class="scene-kicker">PIAZZA ATTIVIX</span>
-            <strong id="statusText">Scegli una richiesta di aiuto.</strong>
+            <p class="eyebrow">MAPPA DI QUARTIERE</p>
+            <h2>La città chiama.</h2>
           </div>
-          <span class="day-chip">Giornata di volontariato</span>
-        </div>
+          <p id="statusText" class="map-status">Scegli un punto sulla mappa.</p>
+        </header>
 
-        <div class="scene" id="scene">
-          <div class="sun" aria-hidden="true"></div>
-          <div class="cloud cloud-one" aria-hidden="true"></div>
-          <div class="cloud cloud-two" aria-hidden="true"></div>
-          <div class="cityline" aria-hidden="true"></div>
-          <div class="trees" aria-hidden="true">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="path" aria-hidden="true"></div>
+        <div class="neighborhood-map" id="scene">
+          <div class="map-grid" aria-hidden="true"></div>
+          <div class="river" aria-hidden="true"></div>
+          <div class="park-shape" aria-hidden="true"></div>
+          <div class="building building-a" aria-hidden="true"></div>
+          <div class="building building-b" aria-hidden="true"></div>
+          <div class="building building-c" aria-hidden="true"></div>
+          <div class="building building-d" aria-hidden="true"></div>
+          <div class="street street-one" aria-hidden="true"></div>
+          <div class="street street-two" aria-hidden="true"></div>
+          <div class="street street-three" aria-hidden="true"></div>
+          <div class="map-caption caption-one" aria-hidden="true">PIAZZA</div>
+          <div class="map-caption caption-two" aria-hidden="true">VIA DELLE IDEE</div>
 
           <div class="impact-burst" id="impactBurst" aria-hidden="true">+ felicità</div>
 
-          <div class="character volunteer" id="volunteer" aria-label="Volontario Attivix">
-            <span class="bubble">Tu</span>
-            <span class="head"></span>
-            <span class="body"></span>
-            <span class="arm arm-left"></span>
-            <span class="arm arm-right"></span>
-            <span class="leg leg-left"></span>
-            <span class="leg leg-right"></span>
+          <div class="volunteer-token" id="volunteer" aria-label="Volontario Attivix">
+            <span class="volunteer-pulse" aria-hidden="true"></span>
+            <span class="volunteer-letter">A</span>
+            <span class="volunteer-label">TU</span>
           </div>
 
-          <button class="mission-point mission-franco" type="button" data-task="digital" aria-label="Aiuta Franco con la lezione digitale">
-            <span class="mission-tag">?</span>
-            <span class="npc npc-franco">
-              <span class="npc-head"></span><span class="npc-body"></span>
+          <button class="mission-point mission-franco" type="button" data-task="digital" aria-label="Apri la missione Lezione digitale con Franco">
+            <span class="mission-pin"><span>01</span></span>
+            <span class="mission-person person-franco" aria-hidden="true">F</span>
+            <span class="mission-copy">
+              <strong>Franco</strong>
+              <small>LEZIONE DIGITALE</small>
             </span>
-            <span class="mission-label">Franco<br /><small>Lezione digitale</small></span>
-            <span class="happiness-bar"><span data-npc-bar="franco"></span></span>
+            <span class="mission-state"><span data-npc-bar="franco"></span></span>
           </button>
 
-          <button class="mission-point mission-anna" type="button" data-task="groceries" aria-label="Aiuta Anna con la spesa solidale">
-            <span class="mission-tag">?</span>
-            <span class="npc npc-anna">
-              <span class="npc-head"></span><span class="npc-body"></span>
+          <button class="mission-point mission-anna" type="button" data-task="groceries" aria-label="Apri la missione Spesa solidale con Anna">
+            <span class="mission-pin"><span>02</span></span>
+            <span class="mission-person person-anna" aria-hidden="true">A</span>
+            <span class="mission-copy">
+              <strong>Anna</strong>
+              <small>SPESA SOLIDALE</small>
             </span>
-            <span class="mission-label">Anna<br /><small>Spesa solidale</small></span>
-            <span class="happiness-bar"><span data-npc-bar="anna"></span></span>
+            <span class="mission-state"><span data-npc-bar="anna"></span></span>
           </button>
 
-          <button class="mission-point mission-park" type="button" data-task="park" aria-label="Partecipa alla cura del parco">
-            <span class="mission-tag">?</span>
-            <span class="park-object">♻</span>
-            <span class="mission-label">Parco<br /><small>Cura condivisa</small></span>
-            <span class="happiness-bar"><span data-npc-bar="park"></span></span>
+          <button class="mission-point mission-park" type="button" data-task="park" aria-label="Apri la missione Cura del parco">
+            <span class="mission-pin"><span>03</span></span>
+            <span class="mission-person person-park" aria-hidden="true">+</span>
+            <span class="mission-copy">
+              <strong>Il parco</strong>
+              <small>CURA CONDIVISA</small>
+            </span>
+            <span class="mission-state"><span data-npc-bar="park"></span></span>
           </button>
 
-          <button class="mission-point mission-lucia" type="button" data-task="company" aria-label="Fai compagnia a Lucia">
-            <span class="mission-tag">?</span>
-            <span class="npc npc-lucia">
-              <span class="npc-head"></span><span class="npc-body"></span>
+          <button class="mission-point mission-lucia" type="button" data-task="company" aria-label="Apri la missione Un po' di compagnia con Lucia">
+            <span class="mission-pin"><span>04</span></span>
+            <span class="mission-person person-lucia" aria-hidden="true">L</span>
+            <span class="mission-copy">
+              <strong>Lucia</strong>
+              <small>UN PO' DI COMPAGNIA</small>
             </span>
-            <span class="mission-label">Lucia<br /><small>Un po' di compagnia</small></span>
-            <span class="happiness-bar"><span data-npc-bar="lucia"></span></span>
+            <span class="mission-state"><span data-npc-bar="lucia"></span></span>
           </button>
         </div>
 
-        <div class="scene-footer">
-          <span>Ogni missione genera un impatto reale nella piazza.</span>
-          <span><span class="legend-dot"></span> Richiesta di aiuto disponibile</span>
-        </div>
+        <footer class="map-footer">
+          <span><i></i> punto attivo</span>
+          <span><b></b> gesto completato</span>
+          <span>clicca un punto per iniziare</span>
+        </footer>
       </section>
 
-      <aside class="side-panel">
-        <section class="panel-card mission-card">
-          <div class="panel-heading">
-            <div>
-              <p class="eyebrow">MISSIONI</p>
-              <h2>Richieste disponibili</h2>
-            </div>
-            <span id="missionCount" class="counter-chip">0</span>
-          </div>
-
+      <aside class="command-column">
+        <section class="mission-board">
+          <header class="board-heading">
+            <p class="eyebrow">BACHECA DI QUARTIERE</p>
+            <h2>Chiamate aperte</h2>
+          </header>
           <div class="mission-list" id="missionList"></div>
         </section>
 
-        <section class="panel-card wallet-card">
-          <div class="panel-heading">
-            <div>
-              <p class="eyebrow">IMPATTO PERSONALE</p>
-              <h2>Portafoglio Attivix</h2>
-            </div>
+        <section class="wallet-card">
+          <div class="wallet-topline">
+            <span>ATTIVIX WALLET</span>
+            <span>PX / IMPATTO</span>
           </div>
-
-          <p class="wallet-copy">Per ogni gesto di cura, una parte della felicità generata diventa punti da spendere nell'ecosistema Attivix.</p>
-          <div class="wallet-display">
-            <span class="wallet-icon">A</span>
-            <div>
-              <strong id="walletPointsLarge">0 PX</strong>
-              <span id="walletLevel">Volontario alle prime missioni</span>
-            </div>
-          </div>
+          <strong id="walletPointsLarge">0 PX</strong>
+          <p id="walletLevel">Volontario alle prime missioni</p>
+          <div class="wallet-rule"></div>
+          <small>Una quota simbolica dell'impatto torna a te: perché il tempo donato merita di essere riconosciuto.</small>
         </section>
 
-        <section class="panel-card activity-card">
-          <div class="panel-heading compact-heading">
-            <div>
-              <p class="eyebrow">DIARIO DI BORDO</p>
-              <h2>Ultimi gesti</h2>
-            </div>
-          </div>
+        <section class="activity-card">
+          <header class="board-heading">
+            <p class="eyebrow">TRACCE LASCIATE</p>
+            <h2>Diario di bordo</h2>
+          </header>
           <ul class="activity-list" id="activityList"></ul>
         </section>
       </aside>
     </section>
 
-    <section class="how-it-works">
-      <div class="how-step">
-        <span>01</span>
-        <div><strong>Osserva</strong><p>Ogni persona o luogo ha una piccola richiesta.</p></div>
-      </div>
-      <div class="how-step">
-        <span>02</span>
-        <div><strong>Agisci</strong><p>Clicca una missione: il volontario la raggiunge e la completa.</p></div>
-      </div>
-      <div class="how-step">
-        <span>03</span>
-        <div><strong>Moltiplica</strong><p>La felicità cresce nella comunità e genera punti per il volontario.</p></div>
-      </div>
+    <section class="game-note">
+      <span>IL PRINCIPIO</span>
+      <p>Un aiuto ricevuto non si ferma a una persona: cambia il clima intorno, crea fiducia e rende più facile il prossimo gesto.</p>
     </section>
   </main>
 
   <div class="modal-backdrop" id="modalBackdrop" hidden>
     <section class="mission-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" id="modalClose" type="button" aria-label="Chiudi">×</button>
-      <div class="modal-icon" id="modalIcon">♥</div>
-      <p class="eyebrow" id="modalEyebrow">MISSIONE</p>
-      <h2 id="modalTitle">Titolo missione</h2>
-      <p id="modalDescription">Descrizione della missione.</p>
+      <div class="modal-topline">
+        <span>DISPATCH ATTIVIX</span>
+        <button class="modal-close" id="modalClose" type="button" aria-label="Chiudi la missione">×</button>
+      </div>
+
+      <div class="modal-main">
+        <div class="modal-icon" id="modalIcon">01</div>
+        <div>
+          <p class="eyebrow" id="modalEyebrow">MISSIONE</p>
+          <h2 id="modalTitle">Titolo missione</h2>
+        </div>
+      </div>
+
+      <p id="modalDescription" class="modal-description">Descrizione della missione.</p>
+
       <div class="mission-reward">
-        <span>Impatto previsto</span>
+        <span>IMPATTO PREVISTO</span>
         <strong id="modalReward">+0 felicità · +0 PX</strong>
       </div>
-      <button class="start-button" id="startMissionButton" type="button">Inizia la missione</button>
+
+      <button class="start-button" id="startMissionButton" type="button">RAGGIUNGI IL PUNTO</button>
+      <p class="modal-footnote">Nessun gesto è troppo piccolo quando qualcuno ne ha bisogno.</p>
     </section>
   </div>
 

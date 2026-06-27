@@ -1,56 +1,24 @@
 # Attivix — Missione Felicità
 
-Piccolo gioco punta e clicca che racconta una cosa semplice: un gesto di volontariato non finisce quando hai completato un'attività. Genera benessere per chi riceve aiuto, rende più forte la comunità e restituisce qualcosa anche a chi si mette in gioco.
+Un piccolo gioco punta e clicca sul valore concreto del volontariato.
 
-Nel gioco il volontario si muove nella piazza Attivix, risponde a quattro richieste e accumula due valori:
+La città presenta quattro richieste: accompagnare Franco nella sua autonomia digitale, aiutare Anna con la spesa, prendersi cura di un luogo condiviso e dedicare tempo all'ascolto di Lucia. Ogni gesto aumenta la felicità in circolo e riconosce al volontario alcuni PX nel portafoglio Attivix.
 
-- **felicità diffusa**, cioè l'impatto nella comunità;
-- **punti Attivix (PX)**, cioè la parte di valore che torna nel portafoglio del volontario.
-
-Il portafoglio è una metafora ludica: non rappresenta denaro né una ricompensa economica reale. Serve a mostrare che l'impegno può essere riconosciuto, valorizzato e trasformato in appartenenza.
+Non è un simulatore di economia. È un modo semplice per raccontare una cosa più vera: il volontariato genera impatto per chi riceve aiuto, per il contesto e anche per chi sceglie di esserci.
 
 ## Cosa fa
 
-- Quattro missioni punta e clicca nella piazza della comunità
-- Volontario animato che raggiunge ogni richiesta
-- Barre di felicità per persone e luoghi
-- Portafoglio Attivix con punti PX
-- Diario degli ultimi gesti
-- Salvataggio locale dei progressi con `localStorage`
-- Reset della partita
-- Layout responsive per desktop e smartphone
-
-## Missioni
-
-```text
-Franco  — Lezione digitale
-Anna    — Spesa solidale
-Parco   — Cura condivisa
-Lucia   — Un po' di compagnia
-```
-
-Ogni missione produce felicità e aggiunge punti al portafoglio Attivix. Il rapporto non è matematicamente “reale”: è una scelta narrativa per spiegare il principio di reciprocità tra volontario, persona e comunità.
-
-## Tecnologie
-
-- HTML
-- CSS
-- JavaScript
-- LocalStorage del browser
-
-Non usa backend, database, framework o servizi esterni. Può essere pubblicato direttamente su GitHub Pages, che ospita file statici HTML, CSS e JavaScript presi da un repository GitHub.
+- Mappa interattiva con quattro missioni;
+- movimento del volontario verso il punto scelto;
+- indicatore della felicità diffusa nella comunità;
+- PX riconosciuti nel portafoglio Attivix;
+- diario dei gesti conclusi;
+- salvataggio automatico tramite `localStorage`;
+- interfaccia responsive, senza framework.
 
 ## Avvio
 
-Clona il progetto:
-
-```bash
-git clone https://github.com/TUO-USERNAME/attivix-missione-felicita.git
-```
-
-Apri la cartella e avvia `index.html` nel browser.
-
-## Struttura
+Apri `index.html` nel browser oppure pubblica la cartella direttamente con GitHub Pages.
 
 ```text
 attivix-missione-felicita/
@@ -60,24 +28,14 @@ attivix-missione-felicita/
 └── README.md
 ```
 
-## Nota sui dati
+## Nota tecnica
 
-Il gioco salva punteggio, felicità e diario nel browser del visitatore. Se vengono cancellati i dati del sito o si usa un altro dispositivo, la partita ricomincia.
+I progressi restano nel browser dell'utente. Il pulsante “Azzera partita” rimuove punti, missioni completate e diario locale.
 
-Per una futura versione collegata a veri account Attivix, i punti dovrebbero essere calcolati e convalidati lato server: un punteggio economico o premiale non va mai affidato soltanto al JavaScript visibile nel browser.
+## Idea visiva
 
-## Idee per evolverlo
-
-- Avatar selezionabile e personalizzabile
-- Più quartieri, più enti e più missioni
-- Livelli e badge di comunità
-- Missioni cooperative tra volontari
-- Mini-quiz sulla cittadinanza attiva
-- Collegamento a eventi o opportunità di volontariato reali
-- Integrazione con un portafoglio Attivix autentico tramite backend protetto
+L'interfaccia usa una mappa illustrata e un linguaggio grafico da manifesto di quartiere, evitando dashboard generiche e carte arrotondate da applicazione SaaS.
 
 ## Licenza
 
-Puoi usare, modificare e migliorare liberamente il progetto.
-
-La cosa importante è non perdere il messaggio: i punti sono simpatici, ma il valore del volontariato resta nelle relazioni e nei cambiamenti concreti che mette in moto.
+Puoi usare e modificare il progetto liberamente. Per un'integrazione reale con Attivix, i PX dovrebbero essere poi gestiti lato server con regole, autenticazione e antifrode.
